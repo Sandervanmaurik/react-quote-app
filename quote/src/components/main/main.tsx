@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import QuoteVotingBox from '../quote-voting-box/quoteVotingBox.js';
+import { Quote } from '../../models/quote';
+import QuoteVotingBox from '../quote-voting-box/quoteVotingBox';
 
 
 function Main() {
-  const [currentQuote, setCurrentQuote] = useState("Test");
+  const [currentQuote, setCurrentQuote] = useState(new Quote());
   const [allQuotes, setAllQuotes] = useState([]);
 
   useEffect(() => {
@@ -14,7 +15,7 @@ function Main() {
         console.log(x);
         setAllQuotes(x);
         let randomQuote = getRandomQuote(allQuotes);
-        setCurrentQuote(randomQuote);  
+        setCurrentQuote(randomQuote as Quote);  
         console.log(randomQuote);
       });   
 
@@ -30,8 +31,8 @@ function Main() {
     </>
   )
 }
-export function getRandomQuote(quotes) {
+function getRandomQuote(quotes: Quote[]) {
   console.log(quotes);
-  return (quotes) ? quotes[Math.floor(Math.random() * quotes.length)] : null;
+  return (quotes) ? quotes[Math.floor(Math.random() * (quotes.length - 1))] : null;
 }
 export default Main;
