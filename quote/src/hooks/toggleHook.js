@@ -1,5 +1,4 @@
-import { useState } from 'react';
-export default function dataHook() {
+export default function useToggle() {
     const [value, setValue] = useState();
 
     function toggleValue(value) {
@@ -7,5 +6,5 @@ export default function dataHook() {
             typeof value === "boolean" ? value : !currentvalue;
         });
     }
-    return [value, toggleValue];
+    return [value, toggleValue]
 }
