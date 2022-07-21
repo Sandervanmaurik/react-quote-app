@@ -1,0 +1,17 @@
+.quote-banner{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 30vh;
+    padding:30px;
+
+            border-radius: 5px;
+    .quote-text{
+      font-size:30px;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      background-clip: text;
+      color: grey;
+      }
+  }
+  //  #7785AC

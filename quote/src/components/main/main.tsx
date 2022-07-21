@@ -1,38 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { Quote } from '../../models/quote';
+import QuoteBanner from '../quote-banner/quoteBanner';
 import QuoteVotingBox from '../quote-voting-box/quoteVotingBox';
+import "../main/main.scss"
 
-
-function Main() {
-  const [currentQuote, setCurrentQuote] = useState(new Quote());
-  const [allQuotes, setAllQuotes] = useState([]);
+const Main: React.FC = () => {
+  const [currentQuote, setCurrentQuote] = useState<Quote>(new Quote());
+  const [allQuotes, setAllQuotes] = useState<Quote[]>([]);
 
   useEffect(() => {
-    // GET request using fetch inside useEffect React hook
     fetch('http://localhost:5000/getquotes')
       .then(response => response.json())
       .then(x => {
-        console.log(x);
-        setAllQuotes(x);
-        let randomQuote = getRandomQuote(allQuotes);
-        setCurrentQuote(randomQuote as Quote);  
-        console.log(randomQuote);
-      });   
-
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+        setQuotes(x);
+      });
   }, []);
 
+  useEffect(() => {
+    let randomQuote = getRandomQuote(allQuotes as Quote[]);
+    setCurrentQuote(randomQuote as Quote);
+  }, [allQuotes]);
+
+  function setQuotes(quotes: Quote[]): void {
+    setAllQuotes(quotes);
+  }
+
   return (
-    <>
-      <div className='quote-banner'>
-        <span className='quote-text'></span>
-      </div>
+    <div className='container'>
+      <QuoteBanner quote={currentQuote?.quote!} />
       <QuoteVotingBox />
-    </>
+    </div>
+
   )
+  function getRandomQuote(quotes: Quote[]) {
+    return (quotes) ? quotes[Math.floor(Math.random() * (quotes.length - 1))] : null;
+  }
 }
-function getRandomQuote(quotes: Quote[]) {
-  console.log(quotes);
-  return (quotes) ? quotes[Math.floor(Math.random() * (quotes.length - 1))] : null;
-}
+
 export default Main;
