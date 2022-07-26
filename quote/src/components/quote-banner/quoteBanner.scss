@@ -4,13 +4,14 @@
     align-items: center;
     min-height: 30vh;
     padding:30px;
+    text-align: center;
 
-            border-radius: 5px;
     .quote-text{
       font-size:30px;
       -webkit-background-clip: text;
       -moz-background-clip: text;
       background-clip: text;
+      font-family: monospace;
       color: grey;
       }
   }

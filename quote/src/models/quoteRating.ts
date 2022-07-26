@@ -1,4 +1,5 @@
 export class QuoteRating{
+    id?: string;
     name?: string;
-    rating?:number;
+    voters?: string[] = [];
 }

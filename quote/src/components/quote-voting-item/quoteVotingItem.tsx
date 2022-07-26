@@ -1,13 +1,11 @@
 import React from 'react'
 import Button from '../button/button';
 import "../quote-voting-item/quoteVotingItem.scss";
-export default function quoteVotingItem({props, onClick}: any) {
-
-
-
+export default function quoteVotingItem({rating, onClick, color, isActive, icon}: any) {
+  
   return (
     <div className="vote-option">
-      <Button key={props.id} id={props.id} border='none' icon={props.icon} color={props.color} height='80%' onClick={onClick} radius='5px' width='80%' text={props.name} isActive={props.isActive}></Button>
+      <Button key={rating.id} id={rating.id} border='none' icon={icon} color={color} height='80%' onClick={onClick} radius='10px' width='80%' text={rating.name} isActive={isActive}></Button>
     </div>
   )
 }
