@@ -2,22 +2,17 @@ import express, { RequestHandler } from "express";
 import { Quote } from "models/quote";
 import fetch from 'node-fetch';
 import cors from 'cors';
-import { nextTick } from "process";
 
 const app = express();
-// app.use(cors); /* NEW */
-// app.use(express.json());
 const allowedOrigins = ['http://localhost:3000'];
 
-// const options: cors.CorsOptions = {
-//     origin: allowedOrigins
-// };
-// app.use(cors(options));
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    origin: allowedOrigins,
 }));
 const port = 5000;
 let allQuotes: Quote[] = [];
+
+app.use(express.json());
 
 app.listen(port, () => {
     console.log(`Now listening on port ${port}`);
@@ -29,7 +24,7 @@ app.listen(port, () => {
                     id: x["id"],
                     quote: x["quote"],
                     author: x["author"],
-                    rating: [{ name: "Boring", rating: 0 }, { name: "I don't get it", rating: 0 }, { name: "Funny", rating: 0 }, { name: "Inspiring", rating: 0 }]
+                    rating: [{ id: "AAA", name: "Boring", voters: [] }, { id: "BBB", name: "I don't get it", voters: [] }, { id: "CCC", name: "Funny", voters: [] }, { id: "DDD", name: "Inspiring", voters: [] }]
                 }
                 allQuotes.push(quote);
             });
@@ -37,6 +32,25 @@ app.listen(port, () => {
 });
 app.get('/getquotes', (req: any, res: any) => {
     res.send(allQuotes);
+});
+
+app.get('/quotes/:quoteId', (req: any, res: any) => {
+    res.send(allQuotes.find(x => x.id == req.params.quoteId));
+});
+
+app.post('/quotes/:quoteId', (req: any, res: any) => {
+    let userId = req.body.userId;
+    let voteOptionId = req.body.vote;
+    let quoteId = req.params.quoteId;
+
+    let quote = allQuotes.find(x => x.id == quoteId);
+    if (quote) {
+        for (let rating of quote.rating) {
+            rating.voters = rating.voters.filter(x => x !== userId);
+        }
+    }
+    quote.rating.find(x => x.id == voteOptionId).voters.push(userId);
+    res.send(quote);
 });
 
 
