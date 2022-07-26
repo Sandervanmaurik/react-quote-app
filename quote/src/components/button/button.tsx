@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 
 interface Props {
+    id: string;
     border: string;
     color: string;
     children?: React.ReactNode;
@@ -9,12 +10,13 @@ interface Props {
     onClick: () => void;
     radius: string;
     width: string;
-    boxShadow: string;
     text: string;
     icon: React.ReactNode;
+    isActive: boolean;
 }
 
 const Button: React.FC<Props> = ({
+    id,
     border,
     color,
     children,
@@ -22,21 +24,30 @@ const Button: React.FC<Props> = ({
     onClick,
     radius,
     width,
-    boxShadow,
     text,
-    icon
+    icon,
+    isActive
 }) => {
+    const [active, setActive] = useState(isActive);
+
+
+    useEffect(() => {
+        setActive(isActive);
+    }, [isActive]);
+
     return (
         <button
+            id={id}
             onClick={onClick}
             style={{
                 backgroundColor: color,
+                cursor: "pointer",
                 border,
                 borderRadius: radius,
                 height,
                 width,
-                boxShadow: boxShadow
             }}
+            className={active ? "btn active" : "btn"}
         >
             <div style={
                 {
@@ -49,7 +60,7 @@ const Button: React.FC<Props> = ({
             }>
                 {icon}
                 <span>
-                {text}
+                    {text}
                 </span>
             </div>
 
