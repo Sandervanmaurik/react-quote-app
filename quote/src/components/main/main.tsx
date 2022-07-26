@@ -17,7 +17,6 @@ const Main: React.FC = () => {
       .then(response => response.json())
       .then((x: Quote[]) => {
         setQuotes(x);
-        console.log(x);
       });
   }, []);
 
@@ -40,7 +39,6 @@ const Main: React.FC = () => {
   const handleVote = (ratingId: string) => {
     if (currentQuote.id) {
       vote(currentQuote.id, visitorId, ratingId).then(resp => {
-        console.log(resp);
         setCurrentQuote(resp as Quote);
       });
     }

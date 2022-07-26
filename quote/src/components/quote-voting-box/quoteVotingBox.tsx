@@ -11,8 +11,6 @@ import "./quoteVotingBox.scss";
 export default function QuoteVotingBox({ rating, onClick, visitorId }: any) {
 
     const rated = (rating: QuoteRating, visitorId: string) => {
-        console.log(rating);
-        console.log(visitorId);
         if (rating.voters?.find(x => x === visitorId)) return true;
         return false;
     }
