@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Quote } from '../../models/quote';
 import QuoteBanner from '../quote-banner/quoteBanner';
+import Stats from '../stats/stats';
 import QuoteVotingBox from '../quote-voting-box/quoteVotingBox';
 import FingerprintJS from "@fingerprintjs/fingerprintjs";
 import "../main/main.scss"
@@ -9,7 +10,7 @@ import { doRequest, vote } from '../../helpers/utils';
 const Main: React.FC = () => {
 
   const [visitorId, setVisitorId] = useState<string>("");
-  const [currentQuote, setCurrentQuote] = useState<Quote>({});
+  const [currentQuote, setCurrentQuote] = useState<Quote>({rating :[]});
 
   useEffect(() => {
     doRequest('/quotes/random', 'GET')
@@ -36,9 +37,12 @@ const Main: React.FC = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='main-container'>
       <QuoteBanner quote={currentQuote?.quote!} />
       <QuoteVotingBox onClick={handleVote} rating={currentQuote?.rating} visitorId={visitorId} />
+      <div className='rating-overview'>
+        <Stats rating={currentQuote?.rating} />
+      </div>
     </div>
   )
 

@@ -4,5 +4,5 @@ export class Quote{
     id?: string;
     quote?: string;
     author?: string;
-    rating?: QuoteRating[] = [];
+    rating: QuoteRating[] = [];
 }

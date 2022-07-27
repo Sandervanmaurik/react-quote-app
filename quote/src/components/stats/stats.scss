@@ -1,0 +1,42 @@
+.stats-container{
+    width:250px;
+    height: 250px;
+    // background-color:red;
+    display:flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap:5%;
+
+}
+
+.bar{
+    height: 100%;
+    border-radius: 10px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:20%;
+    background: black;
+    z-index:99;
+    box-shadow: 0px 0px 0px white inset, -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+    span{
+        margin-bottom:10px;
+    }
+    transition: height 0.5s;
+}
+
+.boring{
+    background-color:#c9ccd6;
+}
+
+.idk{
+    background-color:#9D85FF;
+}
+
+.funny{
+    background-color:#69B59E;
+}
+
+.inspiring{
+    background-color:#FAC94C;
+}
