@@ -30,7 +30,14 @@ app.listen(port, () => {
             });
         });
 });
-app.get('/getquotes', (req: any, res: any) => {
+
+app.get('/quotes/random', (req: any, res: any) => {
+    let randomQuote: Quote =  (allQuotes) ? allQuotes[Math.floor(Math.random() * (allQuotes.length - 1))] : null;
+    res.send(JSON.stringify(randomQuote));
+});
+
+
+app.get('/quotes', (req: any, res: any) => {
     res.send(allQuotes);
 });
 
@@ -53,5 +60,9 @@ app.post('/quotes/:quoteId', (req: any, res: any) => {
     res.send(quote);
 });
 
+app.get('/quotes/:quoteId', (req: any, res: any) => {
+    let quoteId = req.params.quoteId;
+    res.send(allQuotes.find(x => x.id === quoteId));
+});
 
 
