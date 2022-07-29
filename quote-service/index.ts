@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 import cors from 'cors';
 
 const app = express();
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = ['http://localhost:3000', 'http://192.168.0.11:3000'];
 
 app.use(cors({
     origin: allowedOrigins,
@@ -24,7 +24,7 @@ app.listen(port, () => {
                     id: x["id"],
                     quote: x["quote"],
                     author: x["author"],
-                    rating: [{ id: "AAA", name: "Boring", voters: [] }, { id: "BBB", name: "I don't get it", voters: [] }, { id: "CCC", name: "Funny", voters: [] }, { id: "DDD", name: "Inspiring", voters: [] }]
+                    rating: [{ id: "AAA", name: "Boring", voters: ['2c951a4a54a5b4296d96ddd16b592bc3'] }, { id: "BBB", name: "I don't get it", voters: [] }, { id: "CCC", name: "Funny", voters: [] }, { id: "DDD", name: "Inspiring", voters: [] }]
                 }
                 allQuotes.push(quote);
             });
