@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Quote } from '../../models/quote';
-import QuoteBanner from '../quote-banner/quoteBanner';
-import Stats from '../stats/stats';
-import QuoteVotingBox from '../quote-voting-box/quoteVotingBox';
+import QuoteBanner from '../../components/quote-banner/quoteBanner';
+import Stats from '../../components/stats/stats';
+import QuoteVotingBox from '../../components/quote-voting-box/quoteVotingBox';
 import FingerprintJS from "@fingerprintjs/fingerprintjs";
-import "../main/main.scss"
-import { doRequest, vote } from '../../helpers/utils';
+import "./home.scss"
+import { doRequest, vote } from '../../utils/utils';
 
 const Main: React.FC = () => {
 
