@@ -15,4 +15,15 @@
       color: grey;
       }
   }
+
+
+  @media (max-width: 993px) {
+    .quote-banner{
+      min-height: 20vh!important;
+    }
+    .quote-text{
+      font-size:20px!important;
+      
+    }
+  }
   //  #7785AC

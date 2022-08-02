@@ -1,3 +1,4 @@
+import { Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import { Quote } from '../../models/quote'
 import { QuoteRating } from '../../models/quoteRating';
@@ -18,11 +19,11 @@ export default function Stats({rating}: Quote) {
   }
 
   return (
-    <div className='stats-container'>
-        <div style={{height: setCustomHeight(rating[0])}} className='bar boring'><span>{rating[0]?.voters?.length}</span></div>
-        <div style={{height: setCustomHeight(rating[1])}} className='bar idk'><span>{rating[1]?.voters?.length}</span></div>
-        <div style={{height: setCustomHeight(rating[2])}} className='bar funny'><span>{rating[2]?.voters?.length}</span></div>
-        <div style={{height: setCustomHeight(rating[3])}} className='bar inspiring'><span>{rating[3]?.voters?.length}</span></div>
-    </div>
+    <Grid container justifyContent="flex-end" gap="5%"height="250px" width="250px" flexDirection="row">
+        <Grid item marginTop="auto" height={setCustomHeight(rating[0])} className='bar boring'><span>{rating[0]?.voters?.length}</span></Grid>
+        <Grid item marginTop="auto" height={setCustomHeight(rating[1])} className='bar idk'><span>{rating[1]?.voters?.length}</span></Grid>
+        <Grid item marginTop="auto" height={setCustomHeight(rating[2])} className='bar funny'><span>{rating[2]?.voters?.length}</span></Grid>
+        <Grid item marginTop="auto" height={setCustomHeight(rating[3])} className='bar inspiring'><span>{rating[3]?.voters?.length}</span></Grid>
+    </Grid>
   )
 }
