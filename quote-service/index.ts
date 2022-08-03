@@ -24,7 +24,7 @@ app.listen(port, () => {
                     id: x["id"],
                     quote: x["quote"],
                     author: x["author"],
-                    rating: [{ id: "AAA", name: "Boring", voters: ['2c951a4a54a5b4296d96ddd16b592bc3'] }, { id: "BBB", name: "I don't get it", voters: [] }, { id: "CCC", name: "Funny", voters: [] }, { id: "DDD", name: "Inspiring", voters: [] }]
+                    rating: [{ id: "AAA", name: "Boring", voters: ['2c951a4a54a5b4296d96ddd16b592bc3'], color:"#F1F2F6", icon:("<ImSleepy color="#c9ccd6" fontSize="30px" />")}, { id: "BBB", name: "I don't get it", voters: [], color:"#EFEBFF" }, { id: "CCC", name: "Funny", voters: [], color:"#D6EBE5" }, { id: "DDD", name: "Inspiring", voters: [], color:"#FEF3D7" }]
                 }
                 allQuotes.push(quote);
             });
