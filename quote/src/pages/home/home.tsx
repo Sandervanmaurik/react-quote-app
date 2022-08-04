@@ -15,10 +15,11 @@ const Main: React.FC = () => {
   useEffect(() => {
     doRequest('/quotes/random', 'GET')
       .then((rndQuote: Quote) => {
-        setCurrentQuote(quote => quote = rndQuote);
-      });
-  }, []);
 
+        setCurrentQuote(quote => quote = rndQuote);
+      })
+  }, []);
+  
   useEffect(() => {
     // get visitor id
     FingerprintJS.load()
@@ -35,6 +36,7 @@ const Main: React.FC = () => {
       })
     }
   }
+
 
   return (
     <div className='main-container'>

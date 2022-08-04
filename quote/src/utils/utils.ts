@@ -18,3 +18,5 @@ export const vote = (quoteId: string, ratingId: string, userId: string): Promise
    let body = { userId: userId, vote: ratingId };
    return doRequest(`/quotes/${quoteId}`, 'POST', body);
 }
+
+
