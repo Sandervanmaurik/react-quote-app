@@ -5,5 +5,5 @@ export class QuoteRating{
     name?: string;
     voters?: string[] = [];
     color?: string;
-    icon?: React.ReactNode;
+    icon: string | undefined;
 }
