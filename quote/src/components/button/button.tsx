@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 
-interface Props {
+type props = {
     id: string;
     border: string;
     color: string;
@@ -15,7 +15,7 @@ interface Props {
     isActive: boolean;
 }
 
-const Button: React.FC<Props> = ({
+const Button: React.FC<props> = ({
     id,
     border,
     color,

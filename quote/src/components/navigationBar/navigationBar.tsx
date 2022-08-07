@@ -19,16 +19,13 @@ export default function NavigationBar({ quotes, clickHandler, selectedQuoteId }:
 
     return (
         <div className='toolbar-container'>
-            {
-                quotes?.map((item: any) => {
-                    return (
-                        <div className={`toolbar-item ${isSelected(item) ? "selected" : ""} ${item.hasVoted ? "voted" : ""}`} key={item.id} onClick={() => clickHandler(item.id)}>
-                            <span>{item.id}</span>
-                        </div>
-                    )
-                })
-            }
+            {quotes?.map((item: any) => {
+                return (
+                    <div className={`toolbar-item ${isSelected(item) ? "selected" : ""} ${item.hasVoted ? "voted" : ""}`} key={item.id} onClick={() => clickHandler(item.id)}>
+                        <span>{item.id}</span>
+                    </div>
+                )
+            })}
         </div>
-
     )
 }
