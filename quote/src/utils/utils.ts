@@ -1,3 +1,5 @@
+import handleError from "./errorHandler";
+
 const baseURL: string = "http://localhost:5000";
 
 export function doRequest(url: any, method: any, body?: any): Promise<any> {
@@ -12,7 +14,7 @@ export function doRequest(url: any, method: any, body?: any): Promise<any> {
          url += '?' + (new URLSearchParams(body)).toString();
          break;
       case "POST":
-         requestOptions.body =  JSON.stringify(body);
+         requestOptions.body = JSON.stringify(body);
       default:
          break;
    }

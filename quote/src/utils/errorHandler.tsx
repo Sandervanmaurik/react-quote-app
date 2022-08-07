@@ -1,11 +1,14 @@
+import { Snackbar } from "@mui/material";
 import React from "react";
 
-const ErrorHandler = ({error}: any) => {
+const handleError = ({ error }: any) => {
     return (
-      <div role="alert">
-        <p>An error occurred:</p>
-        <pre>{error.message}</pre>
-      </div>
+        <Snackbar
+            open={true}
+            autoHideDuration={5000}
+            onClose={() => { }}
+            action={<></>}
+        />
     )
-  }
-  export default ErrorHandler;
+}
+export default handleError;
