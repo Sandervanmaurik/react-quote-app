@@ -20,10 +20,10 @@ export default function Stats({rating}: Quote) {
 
   return (
     <Grid container justifyContent="flex-end" gap="5%"height="250px" width="250px" flexDirection="row">
-        <Grid item marginTop="auto" height={setCustomHeight(rating[0])} className='bar boring'><span>{rating[0]?.voters?.length}</span></Grid>
-        <Grid item marginTop="auto" height={setCustomHeight(rating[1])} className='bar idk'><span>{rating[1]?.voters?.length}</span></Grid>
-        <Grid item marginTop="auto" height={setCustomHeight(rating[2])} className='bar funny'><span>{rating[2]?.voters?.length}</span></Grid>
-        <Grid item marginTop="auto" height={setCustomHeight(rating[3])} className='bar inspiring'><span>{rating[3]?.voters?.length}</span></Grid>
+        <Grid item marginTop="auto" height={setCustomHeight(rating[0])} className='noselect bar boring'><span>{rating[0]?.voters?.length}</span></Grid>
+        <Grid item marginTop="auto" height={setCustomHeight(rating[1])} className='noselect bar idk'><span>{rating[1]?.voters?.length}</span></Grid>
+        <Grid item marginTop="auto" height={setCustomHeight(rating[2])} className='noselect bar funny'><span>{rating[2]?.voters?.length}</span></Grid>
+        <Grid item marginTop="auto" height={setCustomHeight(rating[3])} className='noselect bar inspiring'><span>{rating[3]?.voters?.length}</span></Grid>
     </Grid>
   )
 }

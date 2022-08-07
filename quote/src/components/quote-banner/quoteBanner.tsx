@@ -7,7 +7,7 @@ type Props = {
 export default function QuoteBanner({ quote }: Props) {
     return (
         <div className='quote-banner'>
-            <span className='quote-text'>{quote}</span>
+            <span className='quote-text noselect'>{quote}</span>
         </div>
     )
 }

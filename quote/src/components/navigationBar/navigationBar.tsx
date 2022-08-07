@@ -22,7 +22,7 @@ export default function NavigationBar({ quotes, clickHandler, selectedQuoteId }:
             {quotes?.map((item: any) => {
                 return (
                     <div className={`toolbar-item ${isSelected(item) ? "selected" : ""} ${item.hasVoted ? "voted" : ""}`} key={item.id} onClick={() => clickHandler(item.id)}>
-                        <span>{item.id}</span>
+                        <span className='noselect'>{item.id}</span>
                     </div>
                 )
             })}

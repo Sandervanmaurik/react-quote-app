@@ -1,6 +1,6 @@
 import handleError from "./errorHandler";
 
-const baseURL: string = "http://localhost:5000";
+const baseURL: string = "http://192.168.68.108:5000";
 
 export function doRequest(url: any, method: any, body?: any): Promise<any> {
    let requestOptions: RequestInit;
