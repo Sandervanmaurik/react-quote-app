@@ -1,7 +1,7 @@
 import React from 'react'
 import '../quote-banner/quoteBanner.scss'
 type Props = {
-    quote: string
+    quote?: string
 }
 
 export default function QuoteBanner({ quote }: Props) {
