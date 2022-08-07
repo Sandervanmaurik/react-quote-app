@@ -9,25 +9,17 @@ import { doRequest, getAllBasicQuotes, vote } from '../../utils/utils';
 import NavigationBar from '../../components/navigationBar/navigationBar';
 import useUpdateEffect from '../../hooks/useUpdateEffect';
 import { LinearProgress } from '@mui/material';
-import useInterval from '../../hooks/useInterval';
 
 const Home: React.FC = () => {
+  type SimpleQuote = { id: string, selected: boolean, hasVoted: boolean };
 
   const [visitorId, setVisitorId] = useState<string>("");
   const [currentQuote, setCurrentQuote] = useState<Quote>({ rating: [] });
-
-  const [timePassed, setTimePassed] = useState(0);
-
-  // const [clear, reset] = useInterval(() => { setTimePassed(prev => prev + 1) }, 300);
-  type SimpleQuote = { id: string, selected: boolean, hasVoted: boolean };
-  const [allSimpleQuotes, setAllSimpleQuotes] = useState<SimpleQuote[]>();
+  const [allSimpleQuotes, setAllSimpleQuotes] = useState<SimpleQuote[]>([]);
   const [selectedSimpleQuoteId, setSelectedSimpleQuoteId] = useState<string>();
 
-
-  const intervalAction = () => {
-    console.log("update");
-    setTimePassed(prev => prev + 1);
-  };
+  const [timePassed, setTimePassed] = useState(0);
+  const timerMaxValueInSeconds = 15;
 
   useEffect(() => {
     // get visitor id
@@ -44,7 +36,7 @@ const Home: React.FC = () => {
       setAllSimpleQuotes(prev => quotes.sort((a, b) => Number(a.id) - Number(b.id)));
     }).then(x => {
       if (allSimpleQuotes) {
-        setSelectedSimpleQuoteId(prev => allSimpleQuotes[Math.floor(Math.random() * allSimpleQuotes.length)].id);
+        setSelectedSimpleQuoteId(prev => getRandomUnvotedQuote()?.id);
       }
     });
   }, [visitorId])
@@ -61,17 +53,19 @@ const Home: React.FC = () => {
   }, [selectedSimpleQuoteId]);
 
   useUpdateEffect(() => {
-    // clearInterval();
-    // const x = setInterval(() => {
-    //   intervalAction()
-    // }, 1000);
-    // return clearInterval(x);
-    // setTimerInterval(prev=> setInterval(() => {
-    //   console.log("current changed");
-    // }, 1000));
-  }, [currentQuote])
-
-
+    const currentInterval = setInterval(() => {
+      setTimePassed(prev => {
+        if (prev < timerMaxValueInSeconds + 0.2) {
+          return prev + 0.1;
+        }
+        if (allSimpleQuotes) {
+          setSelectedSimpleQuoteId(prev => getRandomUnvotedQuote()?.id);
+        }
+        return 0;
+      });
+    }, 100);
+    return () => { clearInterval(currentInterval); setTimePassed(prev => 0) };
+  }, [currentQuote.id])
 
 
   const handleVote = (ratingId: string) => {
@@ -94,6 +88,7 @@ const Home: React.FC = () => {
     }
   }
 
+
   function updateSelectedQuoteInArray(quoteId: string) {
     if (allSimpleQuotes) {
       const newSimpleQuotes = allSimpleQuotes.map(sq => {
@@ -114,15 +109,31 @@ const Home: React.FC = () => {
     }
   }
 
+  function calculatePercentage(value: number) {
+    return value / timerMaxValueInSeconds * 100;
+  }
+
+  function getRandomUnvotedQuote(): SimpleQuote | undefined {
+    let unvotedQuotes = allSimpleQuotes?.filter(x => x.hasVoted === false);
+    if (unvotedQuotes) {
+      return unvotedQuotes[Math.floor(Math.random() * unvotedQuotes.length)];
+    }
+    else {
+      return allSimpleQuotes[Math.floor(Math.random() * allSimpleQuotes.length)];
+    }
+  }
+
 
   return (
     <div className='main-container'>
-      <LinearProgress variant="determinate" value={timePassed} />
+      <LinearProgress variant="determinate" value={calculatePercentage(timePassed)} />
       <NavigationBar quotes={allSimpleQuotes!} clickHandler={handleSelectQuote} selectedQuoteId={currentQuote.id}></NavigationBar>
       <QuoteBanner quote={currentQuote?.quote!} />
       <QuoteVotingBox onClick={handleVote} rating={currentQuote.rating} visitorId={visitorId} />
       <div className='rating-overview'>
-        <Stats rating={currentQuote?.rating} />
+        {
+          <Stats rating={currentQuote?.rating} />
+        }
       </div>
     </div>
   )
