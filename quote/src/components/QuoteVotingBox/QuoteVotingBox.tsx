@@ -5,9 +5,9 @@ import { FaQuestion } from 'react-icons/fa';
 import { GiTeamIdea } from 'react-icons/gi';
 import { ImSleepy } from 'react-icons/im';
 import { QuoteRating } from '../../models/quoteRating';
-import Button from '../button/button';
-import LoadingCircle from '../loadingCircle/loadingCircle';
-import "./quoteVotingBox.scss";
+import Button from '../Button/Button';
+import LoadingCircle from '../LoadingCircle/LoadingCircle';
+import "./QuoteVotingBox.scss";
 
 type props = {
     rating: QuoteRating[];

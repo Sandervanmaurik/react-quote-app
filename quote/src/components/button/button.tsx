@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
+import './Button.scss';
 
 type props = {
     id: string;
     border: string;
     color: string;
-    children?: React.ReactNode;
     height: string;
     onClick: () => void;
     radius: string;
@@ -15,11 +16,10 @@ type props = {
     isActive: boolean;
 }
 
-const Button: React.FC<props> = ({
+function Button({
     id,
     border,
     color,
-    children,
     height,
     onClick,
     radius,
@@ -27,8 +27,17 @@ const Button: React.FC<props> = ({
     text,
     icon,
     isActive
-}) => {
+}: props) {
     const [active, setActive] = useState(isActive);
+
+    const styles = {
+        border: border,
+        backgroundColor: color,
+        cursor: "pointer",
+        borderRadius: radius,
+        height: height,
+        width: width,
+    }
 
 
     useEffect(() => {
@@ -39,14 +48,7 @@ const Button: React.FC<props> = ({
         <button
             id={id}
             onClick={onClick}
-            style={{
-                backgroundColor: color,
-                cursor: "pointer",
-                border,
-                borderRadius: radius,
-                height,
-                width,
-            }}
+            style={styles}
             className={active ? "btn active" : "btn"}
         >
             <div style={
@@ -67,4 +69,16 @@ const Button: React.FC<props> = ({
         </button>
     );
 }
+
+Button.propTypes = {
+    text: PropTypes.string,
+    border: PropTypes.string,
+    color: PropTypes.string,
+    height: PropTypes.string,
+    onClick: PropTypes.func,
+    radius: PropTypes.string,
+    width: PropTypes.string,
+    isActive: PropTypes.bool
+}
+
 export default Button;

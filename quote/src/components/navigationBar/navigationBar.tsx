@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
 import React, { useEffect, useState } from 'react'
 import { Quote } from '../../models/quote';
-import LoadingCircle from '../loadingCircle/loadingCircle';
-import '../navigationBar/navigationBar.scss';
+import LoadingCircle from '../LoadingCircle/LoadingCircle';
+import './NavigationBar.scss';
 type SimpleQuote = { id: string, hasVoted: boolean };
 
 type props = {

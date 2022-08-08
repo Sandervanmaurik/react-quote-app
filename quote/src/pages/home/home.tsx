@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Quote } from '../../models/quote';
-import QuoteBanner from '../../components/quote-banner/quoteBanner';
-import Stats from '../../components/stats/stats';
-import QuoteVotingBox from '../../components/quote-voting-box/quoteVotingBox';
+import QuoteBanner from '../../components/QuoteBanner/QuoteBanner';
+import Stats from '../../components/Stats/Stats';
+import QuoteVotingBox from '../../components/QuoteVotingBox/QuoteVotingBox';
 import "./home.scss"
 import { getAllBasicQuotes, getQuoteById, vote } from '../../utils/quoteUtil';
-import NavigationBar from '../../components/navigationBar/navigationBar';
+import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import useUpdateEffect from '../../hooks/useUpdateEffect';
 import { Alert, LinearProgress, Slide, Snackbar } from '@mui/material';
 import { useVisitor } from '../../contexts/visitorContext';
@@ -111,7 +111,6 @@ const Home: React.FC = () => {
 
   function handleSelectQuote(quoteId: string) {
     setSelectedSimpleQuoteId(prev => allSimpleQuotes?.find(x => x.id === quoteId)?.id);
-
   }
 
   function calculatePercentage(value: number) {

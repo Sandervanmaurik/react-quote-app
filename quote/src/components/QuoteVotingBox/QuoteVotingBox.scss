@@ -1,0 +1,29 @@
+@import '../../styles/variables.scss';
+
+.vote-option{
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    // margin:10px;
+}
+
+button{
+    span {
+        font-weight: 500;
+    }
+}
+
+
+
+.green{
+    color:$green;
+}
+.grey{
+    color:$grey;
+}
+.yellow{
+    color:$yellow;
+}
+.purple{
+    color:$purple;
+}

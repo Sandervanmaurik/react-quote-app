@@ -4,7 +4,7 @@ import Home from './pages/home/home';
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
 import VisitorContextProvider, { useVisitor } from './contexts/visitorContext';
-import LoadingCircle from './components/loadingCircle/loadingCircle';
+import LoadingCircle from './components/LoadingCircle/LoadingCircle';
 
 function App() {
 

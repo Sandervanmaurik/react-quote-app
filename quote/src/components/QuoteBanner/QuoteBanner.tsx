@@ -1,6 +1,6 @@
-import React from 'react'
-import LoadingCircle from '../loadingCircle/loadingCircle'
-import '../quote-banner/quoteBanner.scss'
+import React from 'react';
+import LoadingCircle from '../LoadingCircle/LoadingCircle';
+import './QuoteBanner.scss';
 type Props = {
     quote?: string
 }

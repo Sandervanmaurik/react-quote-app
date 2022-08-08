@@ -1,6 +1,6 @@
 import { CircularProgress, CircularProgressProps, CircularProgressPropsColorOverrides } from '@mui/material';
 import React from 'react';
-import '../loadingCircle/loadingCircle.scss';
+import './LoadingCircle.scss';
 
 type props = {
     color: "primary" | "secondary" | "error" | "info" | "success" | "warning" | "inherit";
