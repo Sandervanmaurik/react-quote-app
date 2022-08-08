@@ -10,7 +10,7 @@ const Template = args => <Button {...args}></Button>
 export const Inactive = Template.bind({});
 Inactive.args = {
     text:"Press me",
-    color:'lightgreen',
+    color:'#F1F2F6',
     width:"100px",
     height:'50px',
     border:'none',
@@ -21,10 +21,22 @@ Inactive.args = {
 export const Active = Template.bind({});
 Active.args = {
     text:"Press me",
-    color:'lightgreen',
+    color:'#F1F2F6',
     width:"100px",
     height:'50px',
     border:'none',
     isActive:true,
+    radius:"10px"
+}
+
+export const InactiveIconButton = Template.bind({});
+InactiveIconButton.args = {
+    text:"Press me",
+    icon:"fa-lightbulb",
+    color:'#F1F2F6',
+    width:"100px",
+    height:'50px',
+    border:'none',
+    isActive:false,
     radius:"10px"
 }

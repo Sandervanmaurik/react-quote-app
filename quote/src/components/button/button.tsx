@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 
 import './Button.scss';
+import Icon from "../Icon/Icon";
 
 type props = {
     id: string;
@@ -12,73 +12,49 @@ type props = {
     radius: string;
     width: string;
     text: string;
-    icon: React.ReactNode;
+    iconName: string;
+    iconColor: string;
     isActive: boolean;
 }
 
-function Button({
-    id,
-    border,
-    color,
-    height,
-    onClick,
-    radius,
-    width,
-    text,
-    icon,
-    isActive
-}: props) {
-    const [active, setActive] = useState(isActive);
-
+const Button = ({ id, border, color, height, onClick, radius, width, text, iconName, iconColor, isActive }: props) => {
     const styles = {
         border: border,
         backgroundColor: color,
         cursor: "pointer",
         borderRadius: radius,
-        height: height,
-        width: width,
+        minHeight: height,
+        minWidth: width,
     }
 
-
-    useEffect(() => {
-        setActive(isActive);
-    }, [isActive]);
+    function icon(){
+        return (iconName) ? <Icon name={iconName} color={iconColor}></Icon> : <></>;
+    }
 
     return (
-        <button
-            id={id}
-            onClick={onClick}
-            style={styles}
-            className={active ? "btn active" : "btn"}
-        >
-            <div style={
-                {
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    flexDirection: "column",
-                    gap: "1rem"
-                }
-            }>
-                {icon}
-                <span>
-                    {text}
-                </span>
+        <button id={id} onClick={onClick} style={styles} className={isActive ? "btn active" : "btn"} >
+            <div style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+                gap: "1rem"
+            }}> {icon()}
+                <span> {text} </span>
             </div>
-
         </button>
     );
-}
+};
 
-Button.propTypes = {
-    text: PropTypes.string,
-    border: PropTypes.string,
-    color: PropTypes.string,
-    height: PropTypes.string,
-    onClick: PropTypes.func,
-    radius: PropTypes.string,
-    width: PropTypes.string,
-    isActive: PropTypes.bool
-}
+// Button.propTypes = {
+//     text: PropTypes.string,
+//     border: PropTypes.string,
+//     color: PropTypes.string,
+//     height: PropTypes.string,
+//     onClick: PropTypes.func,
+//     radius: PropTypes.string,
+//     width: PropTypes.string,
+//     isActive: PropTypes.bool
+// }
 
 export default Button;

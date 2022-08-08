@@ -12,20 +12,20 @@ EmptyStats.args = {
         {
             id: "1",
             voteCount: 0,
-            iconColor: "grey",
+            iconColor: "#c9ccd6",
         },
         {
             id: "2",
             voteCount: 0,
-            iconColor: "purple",
+            iconColor: "#9D85FF",
         }, {
             id: "3",
             voteCount: 0,
-            iconColor: "green",
+            iconColor: "#69B59E",
         }, {
             id: "4",
             voteCount: 0,
-            iconColor: "yellow",
+            iconColor: "#FAC94C",
         }
     ]
 }
@@ -36,20 +36,20 @@ FilledStats.args = {
         {
             id: "1",
             voteCount: 12,
-            iconColor: "grey",
+            iconColor: "#c9ccd6",
         },
         {
             id: "2",
             voteCount: 2,
-            iconColor: "purple",
+            iconColor: "#9D85FF",
         }, {
             id: "3",
             voteCount: 98,
-            iconColor: "green",
+            iconColor: "#69B59E",
         }, {
             id: "4",
             voteCount: 65,
-            iconColor: "yellow",
+            iconColor: "#FAC94C",
         }
     ]
 }

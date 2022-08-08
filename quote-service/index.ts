@@ -25,7 +25,6 @@ app.use(express.json());
 type simpleQuote = { id: string, hasVoted: boolean };
 
 app.listen(port, () => {
-    console.log(`Now listening on port ${port}`);
     fetch('http://quotes.stormconsultancy.co.uk/quotes.json')
         .then(response => response.json())
         .then(data => {
@@ -34,7 +33,7 @@ app.listen(port, () => {
                     id: x["id"],
                     quote: x["quote"],
                     author: x["author"],
-                    rating: [{ id: "AAA", name: "Boring", voters: [], voteCount: 0, color: colors.lightgrey, icon: "sleepy", iconColor:  colors.grey}, { id: "BBB", name: "I don't get it", voters: [], voteCount: 0, color: colors.lightpurple, icon: "questionMark", iconColor: colors.purple }, { id: "CCC", name: "Funny", voters: [], voteCount: 0, color: colors.lightgreen, icon: "laugh", iconColor: colors.green }, { id: "DDD", name: "Inspiring", voters: [], voteCount: 0, color: colors.lightyellow, icon: "idea", iconColor: colors.yellow }]
+                    rating: [{ id: "AAA", name: "Boring", voters: [], voteCount: 0, color: colors.lightgrey, icon: "fa-face-meh", iconColor:  colors.grey}, { id: "BBB", name: "I don't get it", voters: [], voteCount: 0, color: colors.lightpurple, icon: "fa-question", iconColor: colors.purple }, { id: "CCC", name: "Funny", voters: [], voteCount: 0, color: colors.lightgreen, icon: "fa-face-grin-beam", iconColor: colors.green }, { id: "DDD", name: "Inspiring", voters: [], voteCount: 0, color: colors.lightyellow, icon: "fa-lightbulb", iconColor: colors.yellow }]
                 }
                 allQuotes.push(quote);
             });
