@@ -1,4 +1,4 @@
-import express, { RequestHandler } from "express";
+import express from "express";
 import { Quote } from "models/quote";
 import fetch from 'node-fetch';
 import cors from 'cors';

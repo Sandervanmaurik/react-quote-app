@@ -11,10 +11,12 @@ To start the application:
 
 ### `npm run start`
 
-
 ## Build
 To build the application to the 'build' folder:
 
 ### `npm run build`
 
+## Run Storybook
+Storybook of all components used
 
+### `npm run storybook`

@@ -1,9 +1,8 @@
-import React, { useEffect, useState, createContext } from 'react';
+import React from 'react';
 import './App.scss';
-import Home from './pages/home/home';
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
-import { ErrorBoundary } from 'react-error-boundary';
-import VisitorContextProvider, { useVisitor } from './contexts/visitorContext';
+import Home from './pages/Home/Home';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import  { useVisitor } from './contexts/visitorContext';
 import LoadingCircle from './components/LoadingCircle/LoadingCircle';
 
 function App() {

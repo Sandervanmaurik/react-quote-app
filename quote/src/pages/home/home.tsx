@@ -3,7 +3,7 @@ import { Quote } from '../../models/quote';
 import QuoteBanner from '../../components/QuoteBanner/QuoteBanner';
 import Stats from '../../components/Stats/Stats';
 import QuoteVotingBox from '../../components/QuoteVotingBox/QuoteVotingBox';
-import "./home.scss"
+import "./Home.scss"
 import { getAllBasicQuotes, getQuoteById, vote } from '../../utils/quoteUtil';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import useUpdateEffect from '../../hooks/useUpdateEffect';
@@ -25,8 +25,7 @@ const Home: React.FC = () => {
   const { visitorId, visitorLoading } = useVisitor();
 
   useUpdateEffect(() => {
-    // Get all simple quotes on visitorId change;
-    // Set current selectedSimpleQuote to random unvoted quote from this list;
+    // Get available quotes, sort and set state
     getAllBasicQuotes(visitorId).then((quotes: SimpleQuote[]) => {
       if (quotes) {
         setAllSimpleQuotes(prev => quotes.sort((a, b) => Number(a.id) - Number(b.id)));
@@ -37,6 +36,7 @@ const Home: React.FC = () => {
   }, [visitorId])
 
   useUpdateEffect(() => {
+    // Get a random quote and set state;
     if (allSimpleQuotes.length === 0) return;
     setSelectedSimpleQuoteId(prev => {
       return getRandomUnvotedQuote(prev, allSimpleQuotes).id
@@ -56,7 +56,7 @@ const Home: React.FC = () => {
   }, [selectedSimpleQuoteId]);
 
   useUpdateEffect(() => {
-    // Set interval for progress bar when currentQuote changes
+    // Set interval for progress bar
     // Reset interval and select random unvoted quote if time runs out
     if (!currentQuote.id) return;
     const currentInterval = setInterval(() => {
@@ -86,8 +86,6 @@ const Home: React.FC = () => {
 
 
   function handleVote(ratingId: string | undefined) {
-    // Vote for currentQuote with given ratingId
-    // Set currentQuote to response of the vote;
     if (currentQuote.id && ratingId) {
       vote(currentQuote.id, ratingId, visitorId).then(resp => {
         let savedQuote = (resp as Quote);

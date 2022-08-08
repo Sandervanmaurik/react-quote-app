@@ -8,10 +8,10 @@ import { faLightbulb, faFaceGrinBeam, faQuestion, faFaceMeh } from '@fortawesome
 
 library.add(faLightbulb, faFaceGrinBeam, faQuestion, faFaceMeh);
 
-const Icon = ({ iconName, color }: any) => {
+const Icon = ({ name, color }: any) => {
   return (
     <div className="icon">
-      <FontAwesomeIcon className="icon" icon={iconName} color={color} />
+      <FontAwesomeIcon className="icon" icon={name} color={color} />
     </div>
   );
 };

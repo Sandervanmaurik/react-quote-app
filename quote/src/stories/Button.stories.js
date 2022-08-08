@@ -17,7 +17,6 @@ Inactive.args = {
     isActive:false,
     radius:"10px"
 }
-
 export const Active = Template.bind({});
 Active.args = {
     text:"Press me",
@@ -32,8 +31,9 @@ Active.args = {
 export const InactiveIconButton = Template.bind({});
 InactiveIconButton.args = {
     text:"Press me",
-    icon:"fa-lightbulb",
-    color:'#F1F2F6',
+    iconName:"fa-question",
+    iconColor: "#9D85FF",
+    color:'#EFEBFF',
     width:"100px",
     height:'50px',
     border:'none',

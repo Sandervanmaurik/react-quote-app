@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { QuoteRating } from '../../models/quoteRating';
 
 import "./Stats.scss";

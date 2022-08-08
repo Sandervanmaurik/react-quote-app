@@ -1,5 +1,5 @@
-import { Grid, Stack } from '@mui/material';
-import React, { useMemo, useRef } from 'react';
+import { Grid } from '@mui/material';
+import React from 'react';
 import { QuoteRating } from '../../models/quoteRating';
 import Button from '../Button/Button';
 import "./QuoteVotingBox.scss";

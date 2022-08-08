@@ -1,5 +1,4 @@
 import React from "react";
-
 import './Button.scss';
 import Icon from "../Icon/Icon";
 
@@ -18,7 +17,7 @@ type props = {
 }
 
 const Button = ({ id, border, color, height, onClick, radius, width, text, iconName, iconColor, isActive }: props) => {
-    const styles = {
+    const btnStyles: React.CSSProperties = {
         border: border,
         backgroundColor: color,
         cursor: "pointer",
@@ -26,35 +25,25 @@ const Button = ({ id, border, color, height, onClick, radius, width, text, iconN
         minHeight: height,
         minWidth: width,
     }
+    
+    let gap = (iconName) ? "1em" : "";
 
-    function icon(){
-        return (iconName) ? <Icon name={iconName} color={iconColor}></Icon> : <></>;
+    const wrapperStyles: React.CSSProperties = {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        gap:gap
     }
 
+
+
     return (
-        <button id={id} onClick={onClick} style={styles} className={isActive ? "btn active" : "btn"} >
-            <div style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column",
-                gap: "1rem"
-            }}> {icon()}
+        <button id={id} onClick={onClick} style={btnStyles} className={isActive ? "btn active" : "btn"} >
+            <div style={wrapperStyles}> {<Icon name={iconName} color={iconColor}></Icon>}
                 <span> {text} </span>
             </div>
         </button>
     );
 };
-
-// Button.propTypes = {
-//     text: PropTypes.string,
-//     border: PropTypes.string,
-//     color: PropTypes.string,
-//     height: PropTypes.string,
-//     onClick: PropTypes.func,
-//     radius: PropTypes.string,
-//     width: PropTypes.string,
-//     isActive: PropTypes.bool
-// }
-
 export default Button;
