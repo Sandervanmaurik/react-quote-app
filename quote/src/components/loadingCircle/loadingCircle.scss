@@ -5,4 +5,9 @@
     flex-direction: column;
     gap:10px;
     height: 100%;
+    padding:15px;
+    span {
+        font-family: monospace;
+        font-size:12px;
+    }
 }

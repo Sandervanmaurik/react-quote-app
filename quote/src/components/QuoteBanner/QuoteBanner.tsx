@@ -8,7 +8,7 @@ type Props = {
 export default function QuoteBanner({ quote }: Props) {
     if (!quote) {
         return <div className='quote-banner'>
-            <LoadingCircle color='primary' height='100px' width='100px' loadingText="Loading quote..."></LoadingCircle>
+            <LoadingCircle color='#0d98ba' height='100px' width='100px' loadingText="Loading quote..."></LoadingCircle>
         </div>
     }
     return (

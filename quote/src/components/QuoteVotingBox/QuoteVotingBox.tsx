@@ -1,12 +1,7 @@
 import { Grid, Stack } from '@mui/material';
-import React from 'react';
-import { BiLaugh } from 'react-icons/bi';
-import { FaQuestion } from 'react-icons/fa';
-import { GiTeamIdea } from 'react-icons/gi';
-import { ImSleepy } from 'react-icons/im';
+import React, { useMemo, useRef } from 'react';
 import { QuoteRating } from '../../models/quoteRating';
 import Button from '../Button/Button';
-import LoadingCircle from '../LoadingCircle/LoadingCircle';
 import "./QuoteVotingBox.scss";
 
 type props = {
@@ -15,24 +10,9 @@ type props = {
     visitorId: string;
 }
 
-export default function QuoteVotingBox({ rating, onClick, visitorId }: props) {
-    const rated = (rating: QuoteRating, visitorId: string) => {
+const QuoteVotingBox = React.memo(({ rating, onClick, visitorId }: props) => {
+    function getRated(rating: QuoteRating, visitorId: string){
         return rating.voters?.find(x => x === visitorId) ? true : false;
-    }
-
-    function getJsxIcon(name?: string): JSX.Element {
-        switch (name) {
-            case "sleepy":
-                return (<ImSleepy className='grey' fontSize="30px" />);
-            case "questionMark":
-                return (<FaQuestion className='purple' fontSize="30px" />);
-            case "laugh":
-                return (<BiLaugh className='green' fontSize="30px" />);
-            case "idea":
-                return (<GiTeamIdea className='yellow' fontSize="30px" />);
-            default:
-                return (<div></div>);
-        }
     }
 
     if (!rating || rating.length == 0) {
@@ -43,9 +23,11 @@ export default function QuoteVotingBox({ rating, onClick, visitorId }: props) {
         <Grid container justifyContent="center" alignItems="center" direction="row" spacing={{ xs: 1, sm: 2, md: 4, lg: 6, xl: 8 }}>
             {rating?.map((rating: QuoteRating) => {
                 return (<Grid item key={rating.id} className="vote-option">
-                    <Button id={rating.id!} border='none' icon={getJsxIcon(rating?.icon)} color={rating.color!} height='80%' onClick={() => onClick(rating.id)} radius='10px' width='175px' text={rating.name!} isActive={rated(rating, visitorId)}></Button>
+                    <Button id={rating.id!} border='none' iconName={rating?.icon!} color={rating.color!} iconColor={rating.iconColor!} height='80%' onClick={() => onClick(rating.id)} radius='10px' width='175px' text={rating.name!} isActive={getRated(rating, visitorId)}></Button>
                 </Grid>)
             })}
         </Grid>
     );
-}
+})
+
+export default QuoteVotingBox;

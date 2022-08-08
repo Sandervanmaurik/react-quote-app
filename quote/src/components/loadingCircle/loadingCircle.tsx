@@ -1,9 +1,9 @@
-import { CircularProgress, CircularProgressProps, CircularProgressPropsColorOverrides } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import React from 'react';
 import './LoadingCircle.scss';
 
 type props = {
-    color: "primary" | "secondary" | "error" | "info" | "success" | "warning" | "inherit";
+    color: string;
     height: string;
     width: string;
     loadingText: string;
@@ -12,7 +12,7 @@ function LoadingCircle({ color, height, width, loadingText }: props) {
 
     return (
         <div className='loading-container'>
-            <CircularProgress color={color} style={{ height: height, width: width }} />
+            <CircularProgress style={{ height: height, width: width, color: color }} />
             <span>{loadingText}</span>
         </div>
     )

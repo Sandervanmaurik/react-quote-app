@@ -129,7 +129,7 @@ const Home: React.FC = () => {
   return (
     <div className='main-container'>
       <LinearProgress variant="determinate" value={calculatePercentage(timePassed)} className="progress-bar" />
-      <NavigationBar quotes={allSimpleQuotes} clickHandler={handleSelectQuote} selectedQuoteId={currentQuote.id}></NavigationBar>
+      <NavigationBar quotes={allSimpleQuotes} onClick={handleSelectQuote} selectedQuoteId={currentQuote.id}></NavigationBar>
       <QuoteBanner quote={currentQuote.quote} />
       <QuoteVotingBox onClick={handleVote} rating={currentQuote.rating} visitorId={visitorId} />
       <div className='rating-overview'>
