@@ -23,13 +23,13 @@ export default function QuoteVotingBox({ rating, onClick, visitorId }: props) {
     function getJsxIcon(name?: string): JSX.Element {
         switch (name) {
             case "sleepy":
-                return (<ImSleepy color="#c9ccd6" fontSize="30px" />);
+                return (<ImSleepy className='grey' fontSize="30px" />);
             case "questionMark":
-                return (<FaQuestion color="#9D85FF" fontSize="30px" />);
+                return (<FaQuestion className='purple' fontSize="30px" />);
             case "laugh":
-                return (<BiLaugh color="#69B59E" fontSize="30px" />);
+                return (<BiLaugh className='green' fontSize="30px" />);
             case "idea":
-                return (<GiTeamIdea color="#FAC94C" fontSize="30px" />);
+                return (<GiTeamIdea className='yellow' fontSize="30px" />);
             default:
                 return (<div></div>);
         }

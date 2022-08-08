@@ -4,7 +4,7 @@ import QuoteBanner from '../../components/quote-banner/quoteBanner';
 import Stats from '../../components/stats/stats';
 import QuoteVotingBox from '../../components/quote-voting-box/quoteVotingBox';
 import "./home.scss"
-import { getAllBasicQuotes, getQuoteById, vote } from '../../utils/utils';
+import { getAllBasicQuotes, getQuoteById, vote } from '../../utils/quoteUtil';
 import NavigationBar from '../../components/navigationBar/navigationBar';
 import useUpdateEffect from '../../hooks/useUpdateEffect';
 import { Alert, LinearProgress, Slide, Snackbar } from '@mui/material';
@@ -20,7 +20,7 @@ const Home: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [hasError, setHasError] = useState<boolean>(false);
   const [successActionPerformed, setSuccesActionPerformed] = useState<boolean>(false);
-  const timerMaxValueInSeconds = 10;
+  const timerMaxValueInSeconds = 20;
 
   const { visitorId, visitorLoading } = useVisitor();
 
