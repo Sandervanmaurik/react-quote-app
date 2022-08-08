@@ -26,12 +26,11 @@ app.listen(port, () => {
         .then(response => response.json())
         .then(data => {
             (data as []).forEach(x => {
-
                 let quote: Quote = {
                     id: x["id"],
                     quote: x["quote"],
                     author: x["author"],
-                    rating: [{ id: "AAA", name: "Boring", voters: [], color: colors.grey, icon: "sleepy" }, { id: "BBB", name: "I don't get it", voters: [], color: colors.purple, icon: "questionMark" }, { id: "CCC", name: "Funny", voters: [], color: colors.green, icon: "laugh" }, { id: "DDD", name: "Inspiring", voters: [], color: colors.yellow, icon: "idea" }]
+                    rating: [{ id: "AAA", name: "Boring", voters: [], voteCount: 0, color: colors.grey, icon: "sleepy" }, { id: "BBB", name: "I don't get it", voters: [], voteCount: 0, color: colors.purple, icon: "questionMark" }, { id: "CCC", name: "Funny", voters: [], voteCount: 0, color: colors.green, icon: "laugh" }, { id: "DDD", name: "Inspiring", voters: [], voteCount: 0, color: colors.yellow, icon: "idea" }]
                 }
                 allQuotes.push(quote);
             });
@@ -71,10 +70,15 @@ app.post('/quotes/:quoteId', (req: any, res: any) => {
     let quote = allQuotes.find(x => x.id == quoteId);
     if (quote) {
         for (let rating of quote.rating) {
-            rating.voters = rating.voters.filter(x => x !== userId);
+            if (rating.voters.find(voter => voter === userId)) {
+                rating.voteCount -= 1;
+                rating.voters = rating.voters.filter(x => x !== userId);
+            }
         }
     }
-    quote.rating.find(x => x.id == voteOptionId).voters.push(userId);
+    let rating = quote.rating.find(x => x.id == voteOptionId);
+    rating.voters.push(userId);
+    rating.voteCount += 1;
     res.send(quote);
 });
 
