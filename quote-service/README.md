@@ -2,6 +2,11 @@
 This folder contains a Node.js backend application that functions as an API which retrieves data from a quote API and makes it available through it's endpoints.
 
 
+## Init
+To install dependencies:
+
+### `npm install`
+
 ## Start
 To start the application:
 

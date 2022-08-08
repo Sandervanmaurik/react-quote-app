@@ -7,6 +7,6 @@ The quote service is a Node.js backend application that functions as an API whic
 Open de "quote-service" folder for more information.
 
 ## Quote app
-The quote app a the frontend application built with React which communicates with the Quote service to retrieve/send data.
+The quote app is the frontend application built with React which communicates with the Quote service to retrieve/send data.
 
 Open de "quote" folder for more information.
