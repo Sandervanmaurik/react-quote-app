@@ -5,4 +5,5 @@ export class QuoteRating{
     voteCount?: number;
     color?: string;
     icon?: any;
+    iconColor: string;
 }

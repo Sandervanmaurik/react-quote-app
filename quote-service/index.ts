@@ -10,10 +10,14 @@ const port = 5000;
 let allQuotes: Quote[] = [];
 
 const colors = {
-    grey: "#F1F2F6",
-    purple: "#EFEBFF",
-    green: "#D6EBE5",
-    yellow: "#FEF3D7"
+    grey: "#c9ccd6",
+    purple: "#9D85FF",
+    green: "#69B59E",
+    yellow: "#FAC94C",
+    lightgrey: "#F1F2F6",
+    lightpurple: "#EFEBFF",
+    lightgreen: "#D6EBE5",
+    lightyellow: "#FEF3D7"
 }
 
 app.use(express.json());
@@ -30,7 +34,7 @@ app.listen(port, () => {
                     id: x["id"],
                     quote: x["quote"],
                     author: x["author"],
-                    rating: [{ id: "AAA", name: "Boring", voters: [], voteCount: 0, color: colors.grey, icon: "sleepy" }, { id: "BBB", name: "I don't get it", voters: [], voteCount: 0, color: colors.purple, icon: "questionMark" }, { id: "CCC", name: "Funny", voters: [], voteCount: 0, color: colors.green, icon: "laugh" }, { id: "DDD", name: "Inspiring", voters: [], voteCount: 0, color: colors.yellow, icon: "idea" }]
+                    rating: [{ id: "AAA", name: "Boring", voters: [], voteCount: 0, color: colors.lightgrey, icon: "sleepy", iconColor:  colors.grey}, { id: "BBB", name: "I don't get it", voters: [], voteCount: 0, color: colors.lightpurple, icon: "questionMark", iconColor: colors.purple }, { id: "CCC", name: "Funny", voters: [], voteCount: 0, color: colors.lightgreen, icon: "laugh", iconColor: colors.green }, { id: "DDD", name: "Inspiring", voters: [], voteCount: 0, color: colors.lightyellow, icon: "idea", iconColor: colors.yellow }]
                 }
                 allQuotes.push(quote);
             });

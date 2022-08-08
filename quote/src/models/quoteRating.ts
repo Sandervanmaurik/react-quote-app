@@ -6,5 +6,6 @@ export class QuoteRating{
     voters?: string[] = [];
     voteCount?: number;
     color?: string;
-    icon: string | undefined;
+    icon?: string;
+    iconColor?: string;
 }
