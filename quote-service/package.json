@@ -4,7 +4,8 @@
   "description": "Quote service backend",
   "scripts": {
     "dev": "nodemon",
-    "start": "ts-node index.ts"
+    "start": "ts-node index.ts",
+    "build": "tsc -p ."
   },
   "author": "Sandervm",
   "license": "ISC",

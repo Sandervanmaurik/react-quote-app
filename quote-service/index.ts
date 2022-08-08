@@ -9,6 +9,13 @@ app.use(cors());
 const port = 5000;
 let allQuotes: Quote[] = [];
 
+const colors = {
+    grey: "#F1F2F6",
+    purple: "#EFEBFF",
+    green: "#D6EBE5",
+    yellow: "#FEF3D7"
+}
+
 app.use(express.json());
 
 type simpleQuote = { id: string, hasVoted: boolean };
@@ -24,15 +31,7 @@ app.listen(port, () => {
                     id: x["id"],
                     quote: x["quote"],
                     author: x["author"],
-                    rating: [{ id: "AAA", name: "Boring", voters: [], color: "#F1F2F6", icon: "sleepy" }, { id: "BBB", name: "I don't get it", voters: [], color: "#EFEBFF", icon: "questionMark" }, { id: "CCC", name: "Funny", voters: [], color: "#D6EBE5", icon: "laugh" }, { id: "DDD", name: "Inspiring", voters: [], color: "#FEF3D7", icon: "idea" }]
-                }
-                if (x['id'] === 1) {
-                    quote = {
-                        id: x["id"],
-                        quote: x["quote"],
-                        author: x["author"],
-                        rating: [{ id: "AAA", name: "Boring", voters: [], color: "#F1F2F6", icon: "sleepy" }, { id: "BBB", name: "I don't get it", voters: [], color: "#EFEBFF", icon: "questionMark" }, { id: "CCC", name: "Funny", voters: [], color: "#D6EBE5", icon: "laugh" }, { id: "DDD", name: "Inspiring", voters: [], color: "#FEF3D7", icon: "idea" }]
-                    }
+                    rating: [{ id: "AAA", name: "Boring", voters: [], color: colors.grey, icon: "sleepy" }, { id: "BBB", name: "I don't get it", voters: [], color: colors.purple, icon: "questionMark" }, { id: "CCC", name: "Funny", voters: [], color: colors.green, icon: "laugh" }, { id: "DDD", name: "Inspiring", voters: [], color: colors.yellow, icon: "idea" }]
                 }
                 allQuotes.push(quote);
             });
