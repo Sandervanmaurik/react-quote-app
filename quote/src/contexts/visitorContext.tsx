@@ -4,15 +4,15 @@ import React from 'react';
 
 type ContextType = {
     visitorId: string,
-    isLoading: boolean
+    visitorLoading: boolean
 }
 
-const VisitorContext = createContext<ContextType>({visitorId: "", isLoading: true});
+const VisitorContext = createContext<ContextType>({visitorId: "", visitorLoading: true});
 
 
 const VisitorContextProvider = ({ children }: any) => {
     const [visitorId, setVisitorId] = useState<string>("");
-    const [isLoading, setIsLoading] = useState(true);
+    const [visitorLoading, setVisitorLoading] = useState(true);
 
     useEffect(() => {
         // Get visitor id on first render
@@ -20,11 +20,11 @@ const VisitorContextProvider = ({ children }: any) => {
             .then((fp) => fp.get())
             .then((result) => {
                 setVisitorId(prev => result.visitorId);
-                setIsLoading(false);
+                setVisitorLoading(false);
             });
     }, []);
     return (
-        <VisitorContext.Provider value={{ visitorId, isLoading }}>
+        <VisitorContext.Provider value={{ visitorId, visitorLoading }}>
             {children}
         </VisitorContext.Provider>
     )

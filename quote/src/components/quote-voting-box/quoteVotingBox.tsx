@@ -6,10 +6,16 @@ import { GiTeamIdea } from 'react-icons/gi';
 import { ImSleepy } from 'react-icons/im';
 import { QuoteRating } from '../../models/quoteRating';
 import Button from '../button/button';
+import LoadingCircle from '../loadingCircle/loadingCircle';
 import "./quoteVotingBox.scss";
 
+type props = {
+    rating: QuoteRating[];
+    onClick: (ratingId: string | undefined) => void;
+    visitorId: string;
+}
 
-export default function QuoteVotingBox({ rating, onClick, visitorId }: any) {
+export default function QuoteVotingBox({ rating, onClick, visitorId }: props) {
     const rated = (rating: QuoteRating, visitorId: string) => {
         return rating.voters?.find(x => x === visitorId) ? true : false;
     }
@@ -27,6 +33,10 @@ export default function QuoteVotingBox({ rating, onClick, visitorId }: any) {
             default:
                 return (<div></div>);
         }
+    }
+
+    if (!rating || rating.length == 0) {
+        return <></>;
     }
 
     return (

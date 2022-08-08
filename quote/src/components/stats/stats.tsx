@@ -18,7 +18,11 @@ export default function Stats({rating}: Quote) {
     return (toReturn === 0) ?  "10%" : `${toReturn}%`;
   }
 
+  if(!rating || rating.length === 0){
+    return <></>
+  }
   return (
+    
     <Grid container justifyContent="flex-end" gap="5%"height="250px" width="250px" flexDirection="row">
         <Grid item marginTop="auto" height={setCustomHeight(rating[0])} className='noselect bar boring'><span>{rating[0]?.voters?.length}</span></Grid>
         <Grid item marginTop="auto" height={setCustomHeight(rating[1])} className='noselect bar idk'><span>{rating[1]?.voters?.length}</span></Grid>

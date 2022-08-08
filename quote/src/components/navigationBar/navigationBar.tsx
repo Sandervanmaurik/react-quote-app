@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import React, { useEffect, useState } from 'react'
 import { Quote } from '../../models/quote';
+import LoadingCircle from '../loadingCircle/loadingCircle';
 import '../navigationBar/navigationBar.scss';
 type SimpleQuote = { id: string, hasVoted: boolean };
 
@@ -12,9 +13,12 @@ type props = {
 
 export default function NavigationBar({ quotes, clickHandler, selectedQuoteId }: props) {
 
-
     function isSelected(quote: SimpleQuote) {
         return (quote.id === selectedQuoteId) ? true : false;
+    }
+
+    if(!quotes || quotes.length == 0){
+        return <LoadingCircle color='primary' height='100px' width="100px" loadingText='Loading quotes...'></LoadingCircle>
     }
 
     return (

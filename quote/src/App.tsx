@@ -3,35 +3,32 @@ import './App.scss';
 import Home from './pages/home/home';
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
-import ErrorHandler from './utils/errorHandler';
 import VisitorContextProvider, { useVisitor } from './contexts/visitorContext';
 import LoadingCircle from './components/loadingCircle/loadingCircle';
 
 function App() {
 
-  const { isLoading } = useVisitor();
+  const { visitorLoading } = useVisitor();
 
   function AppContent({ isLoading }: any) {
     if (isLoading) {
       return <div className='loader-wrapper'>
-        <LoadingCircle color='primary' height='100px' width='100px' ></LoadingCircle>
+        <LoadingCircle color='primary' height='100px' width='100px' loadingText=''></LoadingCircle>
       </div>
     }
     else {
       return (
-        <ErrorBoundary FallbackComponent={ErrorHandler}>
-          <BrowserRouter>
-            < Routes >
-              <Route path="/" element={<Home />}></Route>
-            </Routes >
-          </BrowserRouter>
-        </ErrorBoundary>
+        <BrowserRouter>
+          < Routes >
+            <Route path="/" element={<Home />}></Route>
+          </Routes >
+        </BrowserRouter>
       );
     }
   }
 
   return (
-    <AppContent isLoading={isLoading}></AppContent>
+    <AppContent isLoading={visitorLoading}></AppContent>
   )
 }
 export default App;

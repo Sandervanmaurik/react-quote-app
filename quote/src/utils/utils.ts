@@ -1,5 +1,3 @@
-import handleError from "./errorHandler";
-
 const baseURL: string = "http://192.168.68.108:5000";
 
 export function doRequest(url: any, method: any, body?: any): Promise<any> {
@@ -29,6 +27,9 @@ export function vote(quoteId: string, ratingId: string, userId: string): Promise
 }
 
 export function getAllBasicQuotes(userId: string) {
-
    return doRequest('/simple-quotes', "GET", { userId: userId });
+}
+
+export function getQuoteById(quoteId: string): Promise<any> {
+   return doRequest(`/quotes/${quoteId}`, 'GET');
 }
