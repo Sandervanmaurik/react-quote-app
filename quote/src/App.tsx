@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import Home from './pages/Home/Home';
+import Home from './pages/home/Home';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import  { useVisitor } from './contexts/visitorContext';
 import LoadingCircle from './components/LoadingCircle/LoadingCircle';
